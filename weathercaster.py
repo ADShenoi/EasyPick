@@ -2,11 +2,11 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from pop import customMsg
-from Bengaluru import Bengaluru_DTC, Bengaluru_KNC, Bengaluru_RFC, Bengaluru_SVC, Bengaluru_ANN, Bengaluru_line_chart
-from Chennai import Chennai_DTC, Chennai_KNC, Chennai_RFC, Chennai_SVC, Chennai_ANN, Chennai_line_chart
-from Thiruvananthapuram import Thiruvananthapuram_DTC, Thiruvananthapuram_KNC, Thiruvananthapuram_RFC, Thiruvananthapuram_SVC, Thiruvananthapuram_ANN, Thiruvananthapuram_line_chart
-from Jaipur import Jaipur_ANN, Jaipur_DTC, Jaipur_KNC, Jaipur_RFC, Jaipur_SVC, Jaipur_line_chart
-from Hyderabad import Hyderabad_ANN, Hyderabad_DTC, Hyderabad_KNC, Hyderabad_RFC, Hyderabad_SVC, Hyderabad_line_chart
+from Bengaluru import Bengaluru_DTC, Bengaluru_KNC, Bengaluru_RFC, Bengaluru_SVC, Bengaluru_line_chart
+from Chennai import Chennai_DTC, Chennai_KNC, Chennai_RFC, Chennai_SVC, Chennai_line_chart
+from Thiruvananthapuram import Thiruvananthapuram_DTC, Thiruvananthapuram_KNC, Thiruvananthapuram_RFC, Thiruvananthapuram_SVC, Thiruvananthapuram_line_chart
+from Jaipur import Jaipur_DTC, Jaipur_KNC, Jaipur_RFC, Jaipur_SVC, Jaipur_line_chart
+from Hyderabad import Hyderabad_DTC, Hyderabad_KNC, Hyderabad_RFC, Hyderabad_SVC, Hyderabad_line_chart
 import sklearn as sk
 
 st.title('WeatherCaster')
@@ -24,7 +24,7 @@ if st.button('App Tour'):
     customMsg(msg, 10, 'warning')
 
 location = st.sidebar.selectbox("Select Location", ['Jaipur', 'Chennai','Bengaluru', 'Thiruvananthapuram', 'Hyderabad'])
-model_algo = st.sidebar.selectbox("Prediction Algorithm", ['KNeighborsClassifier', 'ANN', 'DecisionTreeClassifier'
+model_algo = st.sidebar.selectbox("Prediction Algorithm", ['KNeighborsClassifier', 'DecisionTreeClassifier'
                                                                   , 'RandomForestClassifier', 'SVC'])
 model_temp = st.sidebar.slider(label='Tempereature (°F)', min_value=50, max_value=110, value=82)
 model_dew = st.sidebar.slider(label='Dew Point (F)', min_value=20, max_value=90, value=77)
@@ -98,8 +98,6 @@ if st.sidebar.button('Predict'):
     if location == 'Bengaluru':
         if model_algo == 'KNeighborsClassifier':
             predicted = Bengaluru_KNC([model_temp, model_dew, model_hum, model_wind_sp, model_press])
-        elif model_algo == 'ANN':
-            predicted = Bengaluru_ANN([float(model_temp), float(model_dew), float(model_hum), float(model_wind_sp), float(model_press)])
         elif model_algo == 'DecisionTreeClassifier':
             predicted = Bengaluru_DTC([model_temp, model_dew, model_hum, model_wind_sp, model_press])
         elif model_algo == 'RandomForestClassifier':
@@ -109,8 +107,6 @@ if st.sidebar.button('Predict'):
     elif location == 'Chennai':
         if model_algo == 'KNeighborsClassifier':
             predicted = Chennai_KNC([model_temp, model_dew, model_hum, model_wind_sp, model_press])
-        elif model_algo == 'ANN':
-            predicted = Chennai_ANN([float(model_temp), float(model_dew), float(model_hum), float(model_wind_sp), float(model_press)])
         elif model_algo == 'DecisionTreeClassifier':
             predicted = Chennai_DTC([model_temp, model_dew, model_hum, model_wind_sp, model_press])
         elif model_algo == 'RandomForestClassifier':
@@ -120,8 +116,6 @@ if st.sidebar.button('Predict'):
     elif location == 'Thiruvananthapuram':
         if model_algo == 'KNeighborsClassifier':
             predicted = Thiruvananthapuram_KNC([model_temp, model_dew, model_hum, model_wind_sp, model_press])
-        elif model_algo == 'ANN':
-            predicted = Thiruvananthapuram_ANN([float(model_temp), float(model_dew), float(model_hum), float(model_wind_sp), float(model_press)])
         elif model_algo == 'DecisionTreeClassifier':
             predicted = Thiruvananthapuram_DTC([model_temp, model_dew, model_hum, model_wind_sp, model_press])
         elif model_algo == 'RandomForestClassifier':
@@ -132,8 +126,6 @@ if st.sidebar.button('Predict'):
     elif location == 'Jaipur':
         if model_algo == 'KNeighborsClassifier':
             predicted = Jaipur_KNC([model_temp, model_dew, model_hum, model_wind_sp, model_press])
-        elif model_algo == 'ANN':
-            predicted =  Jaipur_ANN([float(model_temp), float(model_dew), float(model_hum), float(model_wind_sp), float(model_press)])
         elif model_algo == 'DecisionTreeClassifier':
             predicted = Jaipur_DTC([model_temp, model_dew, model_hum, model_wind_sp, model_press])
         elif model_algo == 'RandomForestClassifier':
@@ -144,8 +136,6 @@ if st.sidebar.button('Predict'):
     elif location == 'Hyderabad':
         if model_algo == 'KNeighborsClassifier':
             predicted = Hyderabad_KNC([model_temp, model_dew, model_hum, model_wind_sp, model_press])
-        elif model_algo == 'ANN':
-            predicted = Hyderabad_ANN([float(model_temp), float(model_dew), float(model_hum), float(model_wind_sp), float(model_press)])
         elif model_algo == 'DecisionTreeClassifier':
             predicted = Hyderabad_DTC([model_temp, model_dew, model_hum, model_wind_sp, model_press])
         elif model_algo == 'RandomForestClassifier':

@@ -54,7 +54,7 @@ X_train, X_test, y_train, y_test = train_test_split(values, target, test_size=1/
 X_train_ann, X_test_ann, y_train_ann, y_test_ann = train_test_split(values, target_ann, test_size=1/3, random_state=10)
 
 from sklearn.neighbors import KNeighborsClassifier
-    KNC = KNeighborsClassifier(n_neighbors=43)
+KNC = KNeighborsClassifier(n_neighbors=43)
 KNC.fit(X_train, y_train)
 
 

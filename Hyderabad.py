@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from tensorflow import keras
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OrdinalEncoder
@@ -94,22 +93,7 @@ def Hyderabad_SVC(lst):
     result = svc.predict([lst])
     return encoder.inverse_transform(result)
 
-model = keras.Sequential([
-    keras.layers.Dense(100,input_dim=5, activation='relu'),
-    keras.layers.Dense(100, activation='relu'),
-    keras.layers.Dense(100, activation='relu'),
-    keras.layers.Dense(100, activation='relu'),
-    keras.layers.Dense(100, activation='relu'),
-    keras.layers.Dense(100, activation='relu'),
-    keras.layers.Dense(5, activation='softmax')])
-model.compile(
-    optimizer='adam',
-    loss='categorical_crossentropy',
-    metrics=['accuracy'])
-model.fit(X_train_ann, y_train_ann, epochs=2,validation_data=(X_test_ann,y_test_ann))
 
-def Hyderabad_ANN(lst):
-    return encoder.inverse_transform(np.argmax(to_categorical(model.predict_classes([lst])), axis=1))
 
 def changemonth(x):
     dicts={}

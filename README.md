@@ -1,2 +1,1 @@
-# wc
-weather prediction
+# easypick
